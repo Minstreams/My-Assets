@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 平滑追踪
+/// 位置平滑追踪
 /// </summary>
-[AddComponentMenu("My Assets/Tracker")]
+[AddComponentMenu("My Assets/Position Tracker")]
 [DisallowMultipleComponent]
-public class Tracker : MonoBehaviour
+public class PositionTracker : MonoBehaviour
 {
-    [Header("【平滑追踪器】")]
+    [Header("【位置平滑追踪器】")]
     public Transform target;
     [Header("平滑度")]
     [Range(0.05f, 0.95f)]
@@ -18,6 +18,5 @@ public class Tracker : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position += ((1 - smoothness) * (target.position - transform.position));
-        transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, 1 - smoothness);
     }
 }
