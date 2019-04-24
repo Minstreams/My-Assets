@@ -1,40 +1,106 @@
 #include<iostream>
 #include<conio.h>
+#include<Windows.h>
+#include<stack>
+
+using namespace std; 
 
 bool pause = true;
-unsigned int ad = 0;
-		
+DWORD address = 0;
+BYTE data[8] = {0};
+int count = 8;
+
+//TODO Undo Recorder
+struct UndoNode
+{
+	int count;
+	int row;	
+};
+stack<UndoNode> recorder = stack<UndoNode>();
+
+void popRecorder(){
+	if(recorder.top().row == 1)recorder.pop();
+	else recorder.top().row--;
+	
+	address-=count;
+}
+
+HANDLE handle; 
+
 int main(int argc,char *argv[],char *envp[]){
+	//initial
+	handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	
+	
+	//Get File Name 
 	char *c;
-	std::cout<<"File name:";
+	cout<<"File name:";
+	
 	if(argc>1)
 	{
 		c = argv[1];	
-		std::cout<<c<<std::endl;
+		cout<<c<<endl;
 	}
 	else
 	{
-		std::cin>>c;
+		cin>>c;
 	}
-
-	unsigned char intList[8] ={0};
 	
+	//Open File 
 	FILE *f = fopen(c,"rb");
-	if(f!=NULL)
+	if(f==NULL)
 	{
-		std::cout
-		<<"©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´\n"
-		<<"©¦ Address ©¦ Hexadecimal Code       \t©¦ Char value      \t©¦ Int value               ©¦\n"
-		<<"©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©à©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©à©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©à©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È\n";
-		while(fread(intList,sizeof(char),8,f)>0)
+		printf("file doesn't exist!");
+		system("pause");
+		return 0;
+	}
+	
+	//print Header 
+	cout
+	<<"©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´\n"
+	<<"©¦ Address ©¦ Hexadecimal Code       \t©¦ Char value      \t©¦ Int value   ©¦\n"
+	<<"©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©à©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©à©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©à©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È\n";
+	
+	
+	while(true){
+		//read data
+		int dataCountToRead = count;
+		int p=0;
+		while(!feof(f)&&dataCountToRead>0)
 		{
+			data[p] = fgetc(f);
+			p++;
+			dataCountToRead--;
+		}
+		while(p<8)
+		{
+			data[p] = 0;
+			p++;
+		}
+		count-=dataCountToRead;
+		
+		//display
+		if(count == 0)
+		{
+			//the last row
+			cout
+			<<"©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼\n"; 
+		}
+		else
+		{
+			//address
+			printf("©¦ %08X©¦ ",address);
 			
-			printf("©¦ %08X©¦ ",ad);
-			for(int i=0;i<8;i++)printf("%02X ",intList[i]);
+			//data
+			for(int i=0;i<count;i++)printf("%02X ",data[i]);
+			for(int i=0;i<8-count;i++)printf("   ");
 			printf("\t©¦ ");
-			for(int i=0;i<8;i++)
+			
+			//char value
+			int space = 16-2*count;
+			for(int i=0;i<count;i++)
 			{
-				unsigned char j = intList[i];
+				BYTE j = data[i];
 				switch(j)
 				{
 				case '\n':
@@ -56,66 +122,107 @@ int main(int argc,char *argv[],char *envp[]){
 					printf("¡ö");
 					break;
 				case 0x10:
-					printf("DL");
+					printf("©¸L");
 					break;
 				case 0x11:
-					printf("D1");
+					printf("©¸1");
 					break;
 				case 0x12:
-					printf("D2");
+					printf("©¸2");
 					break;
 				case 0x13:
-					printf("D3");
+					printf("©¸3");
 					break;
 				case 0x14:
-					printf("D4");
+					printf("©¸4");
 					break;
 				default:
-					if(i<7&&j>=128){
-						unsigned char t = intList[i+1];
-						
-						switch(t)
-						{
-						case '\n':
-						case '\r':
-						case '\b':
-						case '\t':
-						case '\a':
-							printf("¡ö");
-							break;
-						default:
-							printf("%c%c",j,t);
-							break;
-						}
+					if(j>=128)
+					{
+						printf("%c",j);
+						space++;
 					}
 					else printf("%-2c",j);
-					break;	
-				}	
+					break;
+				}
 			}
+			for(int i=0;i<space;i++)printf(" ");
 			printf("   \t©¦ ");
 			
-			printf("%10u \t%10u©¦",*((unsigned int*)(intList)+0),*((unsigned int*)(intList)+1));
-
-			printf("\n");
-					
-						
-			//press esc to exit
-			if(pause||_kbhit())
-			{
-				int g = getch();
-				if(g==32)pause=pause?false:true;
-				if(g==27)break;
-			}
-			ad+=8;
+			//int value
+			printf("%12ld©¦",*((long*)data));
 		}
-		std::cout
-		<<"©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤\t©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼\n"; 
-		fclose(f);
+		
+		//record
+		if(recorder.empty()||recorder.top().count!=count)recorder.push({count,1});
+		else recorder.top().row++;
+		address+=count;
+		
+		//Control
+		if(pause||_kbhit())
+		{
+			int g = getch();
+			if(g == '\b')
+			{
+				pause = true;
+				cout<<"\r";
+				fseek(f,-count,SEEK_CUR);
+				popRecorder();
+				
+				if(recorder.empty())
+				{
+					cout<<'\a';
+					continue;
+				}
+				
+				cout<<" ";
+				CONSOLE_SCREEN_BUFFER_INFO info = {};
+				GetConsoleScreenBufferInfo(handle,&info);
+				SetConsoleCursorPosition(handle,{0,info.dwCursorPosition.Y-1});
+				count = recorder.top().count;
+				fseek(f,-count,SEEK_CUR);
+				
+				popRecorder();
+			}
+			else if(count == 0)break;
+			else switch(g)
+			{
+			case 32://space
+				pause = !pause;
+				
+				cout<<endl;
+				break;
+			case 27://ESC
+				count = 0;
+				cout<<endl;
+				break;
+			case '1':
+			case '2':
+			case '3':
+			case '4':
+			case '5':
+			case '6':
+			case '7':
+			case '8':	
+				fseek(f,-count,SEEK_CUR);
+				popRecorder();
+				
+				count = g-'0';
+				cout<<'\r';	
+				break;
+			default://next row
+				cout<<endl;
+				break;
+			}
+							
+		}
+		else
+		{
+			cout<<endl;
+		}
 	}
-	else
-	{
-		printf("file doesn't exist!");
-	}
+
+	cout<<"Reading end, total size: "<<address<<"Byte"<<endl;
 	
 	system("pause");
 	return 0;
