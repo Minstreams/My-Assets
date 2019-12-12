@@ -120,6 +120,7 @@ namespace GameSystem
 
 #if UNITY_EDITOR
         public bool test;
+        public bool saveData;
 #endif
         private static TheMatrix instance;
         private static TheMatrix Instance
@@ -226,7 +227,6 @@ namespace GameSystem
         {
             string stream = JsonUtility.ToJson(data);
             PlayerPrefs.SetString(data.ToString(), stream);
-            data.saved = true;
             Debug.Log(data.name + " \tsaved!");
         }
         public static void Save(SavableObject data)
@@ -244,7 +244,6 @@ namespace GameSystem
             }
             string stream = PlayerPrefs.GetString(data.ToString());
             JsonUtility.FromJsonOverwrite(stream, data);
-            data.saved = true;
             Debug.Log(data.name + " \tloaded!");
         }
 
@@ -254,7 +253,7 @@ namespace GameSystem
             if (dataToSave == null || dataToSave.Length == 0) return;
             foreach (SavableObject so in dataToSave)
             {
-                if (so.saved) continue;
+                so.ReadData();
                 SaveTemporary(so);
             }
             PlayerPrefs.Save();
@@ -265,12 +264,14 @@ namespace GameSystem
             foreach (SavableObject so in dataToSave)
             {
                 Load(so);
+                so.OnLoad();
             }
         }
         [ContextMenu("Delete All Data")]
         public void DeleteAll()
         {
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
             Debug.Log("All saved data deleted!");
         }
 
@@ -283,20 +284,38 @@ namespace GameSystem
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
+
 #if UNITY_EDITOR
             if (test)
 #endif
-                StartCoroutine(_Start());
+            StartCoroutine(_Start());
 
 #if UNITY_EDITOR
             else
                 SceneManager.UnloadSceneAsync("System");
+            if (saveData)
 #endif
             LoadAll();
+#if UNITY_EDITOR
+            else
+            {
+                foreach (SavableObject so in dataToSave)
+                {
+                    so.OnLoad();
+                }
+            }
+#endif
+
+            OnSubSystemInit?.Invoke();
         }
         private void OnDestroy()
         {
-            SaveAll();
+#if UNITY_EDITOR
+            if (saveData)
+#endif
+            {
+                SaveAll();
+            }
         }
     }
 
@@ -306,8 +325,19 @@ namespace GameSystem
     public enum GameMessage
     {
         Start,
-        Skip,
+        Next,
         Return,
         Exit
     }
 }
+
+[System.Serializable]
+public class FloatEvent : UnityEvent<float> { }
+[System.Serializable]
+public class Vec2Event : UnityEvent<Vector2> { }
+[System.Serializable]
+public class IntEvent : UnityEvent<int> { }
+[System.Serializable]
+public class Vec3Event : UnityEvent<Vector3> { }
+[System.Serializable]
+public class StringEvent : UnityEvent<string> { }

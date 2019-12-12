@@ -11,7 +11,7 @@ namespace GameSystem
     public abstract class SubSystem<SubSetting> where SubSetting : ScriptableObject
     {
         private static SubSetting _Setting;
-        protected static SubSetting Setting
+        public static SubSetting Setting
         {
             get
             {

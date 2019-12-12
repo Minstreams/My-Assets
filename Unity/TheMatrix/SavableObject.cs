@@ -7,9 +7,12 @@ using UnityEngine;
 /// </summary>
 public abstract class SavableObject : ScriptableObject
 {
-    /// <summary>
-    /// 是否已经保存
-    /// </summary>
-    [System.NonSerialized]
-    public bool saved;
+    ///// <summary>
+    ///// 是否已经保存
+    ///// </summary>
+    //[System.NonSerialized]
+    //public bool saved;
+
+    public abstract void OnLoad();
+    public abstract void ReadData();
 }
