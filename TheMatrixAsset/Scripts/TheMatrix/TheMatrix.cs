@@ -178,6 +178,7 @@ namespace GameSystem
         public static void Dialog(string msg, string ok = "OK")
         {
 #if UNITY_EDITOR
+            Debug("Dialog:" + msg);
             EditorUtility.DisplayDialog("The Matrix", msg, ok);
 #endif
         }
