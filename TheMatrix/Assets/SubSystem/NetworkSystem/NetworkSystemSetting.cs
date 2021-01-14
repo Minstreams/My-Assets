@@ -16,7 +16,6 @@ namespace GameSystem.Setting
         [Label] public Vector2Int clientTCPPortRange = new Vector2Int(12306, 17851);
 
         [MinsHeader("Connection", SummaryType.Header)]
-        [Label] public IPEndPoint HelperEndPoint;
         /// <summary>
         /// to check if the version matches
         /// </summary>

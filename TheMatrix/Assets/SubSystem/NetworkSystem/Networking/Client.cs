@@ -7,7 +7,6 @@ namespace GameSystem.Networking
     /// </summary>
     public partial class Client
     {
-        Setting.NetworkSystemSetting Setting => NetworkSystem.Setting;
         bool isDestroyed = false;
 
         public void Destroy()
@@ -28,14 +27,13 @@ namespace GameSystem.Networking
         {
             try
             {
-                NetworkSystem.DetectLocalIPAddress();
-                port = NetworkSystem.NewValidPort();
+                port = CallNewValidPort();
                 Log("Client activated……:" + port);
             }
             catch (Exception ex)
             {
                 Log(ex);
-                NetworkSystem.ShutdownClient();
+                CallShutdownClient();
                 return;
             }
         }

@@ -28,7 +28,7 @@ namespace GameSystem.Networking
             {
                 try
                 {
-                    client = new TcpClient(new IPEndPoint(NetworkSystem.LocalIPAddress, port));
+                    client = new TcpClient(new IPEndPoint(LocalIPAddress, port));
                     break;
                 }
                 catch (SocketException ex)
@@ -37,16 +37,16 @@ namespace GameSystem.Networking
                     if (ex.SocketErrorCode == SocketError.AddressAlreadyInUse)
                     {
                         // Port already in use. Retry with a new port
-                        port = NetworkSystem.NewValidPort();
+                        port = CallNewValidPort();
                     }
-                    else break;
+                    else throw ex;
                 }
                 catch (Exception ex)
                 {
                     Log(ex);
                     client.Close();
                     client = null;
-                    return;
+                    throw ex;
                 }
             }
             connectThread = new Thread(ConnectThread);
@@ -54,7 +54,7 @@ namespace GameSystem.Networking
         }
         public void StopTCPConnecting()
         {
-            if (IsConnected) NetworkSystem.CallDisconnection();
+            if (IsConnected) CallDisconnection();
             else if (client == null)
             {
                 Log("Connection already closed!");
@@ -76,7 +76,7 @@ namespace GameSystem.Networking
                 Log("Sending failed.");
                 return;
             }
-            byte[] messageBytes = Encoding.UTF8.GetBytes(message + NetworkSystem.divisionMark);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(message + DivisionMark);
             stream.Write(messageBytes, 0, messageBytes.Length);
             Log("Send: " + message);
         }
@@ -89,16 +89,16 @@ namespace GameSystem.Networking
         NetworkStream stream;
         Thread receiveThread;
         string bufferString = "";
-        readonly byte[] buffer = new byte[NetworkSystem.maxMsgLength];
+        readonly byte[] buffer = new byte[MaxMsgLength];
 
         void ConnectThread()
         {
             do
             {
-                Log($"Connecting……|ip:{NetworkSystem.LocalIPAddress}:{port}|remote:{NetworkSystem.ServerIPAddress}:{Setting.serverTCPPort}");
+                Log($"Connecting……|ip:{LocalIPAddress}:{port}|remote:{ServerIPAddress}:{ServerTCPPort}");
                 try
                 {
-                    client.Connect(new IPEndPoint(NetworkSystem.ServerIPAddress, Setting.serverTCPPort));
+                    client.Connect(new IPEndPoint(ServerIPAddress, ServerTCPPort));
                     // Block --------------------------------
                 }
                 catch (SocketException ex)
@@ -110,11 +110,11 @@ namespace GameSystem.Networking
                         while (true)
                         {
                             client?.Close();
-                            port = NetworkSystem.NewValidPort();
+                            port = CallNewValidPort();
                             Log("Reconnecting with a new port:" + port);
                             try
                             {
-                                client = new TcpClient(new IPEndPoint(NetworkSystem.LocalIPAddress, port));
+                                client = new TcpClient(new IPEndPoint(LocalIPAddress, port));
                                 break;
                             }
                             catch (SocketException exx)
@@ -168,7 +168,7 @@ namespace GameSystem.Networking
             }
             receiveString = Encoding.UTF8.GetString(buffer, 0, count);
             NetId = receiveString.Substring(0, receiveString.Length - 1);
-            NetworkSystem.CallConnection();
+            CallConnection();
 
             try
             {
@@ -182,19 +182,19 @@ namespace GameSystem.Networking
                         stream?.Close();
                         client?.Close();
                         client = null;
-                        NetworkSystem.CallDisconnection();
+                        CallDisconnection();
                         return;
                     }
                     receiveString = Encoding.UTF8.GetString(buffer, 0, count);
                     Log($"Receive{client.Client.LocalEndPoint}:{receiveString}");
                     bufferString += receiveString;
 
-                    Match match = NetworkSystem.packetCutter.Match(bufferString);
+                    Match match = PacketCutter.Match(bufferString);
                     while (match.Success)
                     {
-                        NetworkSystem.CallReceive(match.Groups[1].Value);
+                        CallReceive(match.Groups[1].Value);
                         bufferString = match.Groups[2].Value;
-                        match = NetworkSystem.packetCutter.Match(bufferString);
+                        match = PacketCutter.Match(bufferString);
                     }
                 }
             }
@@ -208,7 +208,7 @@ namespace GameSystem.Networking
                 stream?.Close();
                 client?.Close();
                 client = null;
-                NetworkSystem.CallDisconnection();
+                CallDisconnection();
                 return;
             }
         }

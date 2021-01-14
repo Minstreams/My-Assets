@@ -21,20 +21,19 @@ namespace GameSystem.Networking
             {
                 try
                 {
-                    udpClient = new UdpClient(Setting.clientUDPPort, AddressFamily.InterNetwork) { EnableBroadcast = true };
+                    udpClient = new UdpClient(ClientUDPPort, AddressFamily.InterNetwork) { EnableBroadcast = true };
                     break;
                 }
                 catch (SocketException ex)
                 {
                     Log(ex);
-                    // TODO: handle the exception here
-                    return;
+                    throw ex;
                 }
                 catch (Exception ex)
                 {
                     Log(ex);
                     CloseUDP();
-                    return;
+                    throw ex;
                 }
             }
             udpReceiveThread = new Thread(UDPReceiveThread);
@@ -69,16 +68,16 @@ namespace GameSystem.Networking
 
         void UDPReceiveThread()
         {
-            Log("Start receiving udp packet……:" + Setting.clientUDPPort);
+            Log("Start receiving udp packet……:" + ClientUDPPort);
             while (true)
             {
                 try
                 {
-                    IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, Setting.clientUDPPort);
+                    IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, ClientUDPPort);
                     byte[] buffer = udpClient.Receive(ref remoteIP);
                     string receiveString = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Log($"UDPReceive{remoteIP}:{receiveString}");
-                    NetworkSystem.CallUDPReceive(new UDPPacket(receiveString, remoteIP));
+                    CallUDPReceive(new UDPPacket(receiveString, remoteIP));
                 }
                 catch (SocketException ex)
                 {
@@ -99,6 +98,5 @@ namespace GameSystem.Networking
                 }
             }
         }
-
     }
 }

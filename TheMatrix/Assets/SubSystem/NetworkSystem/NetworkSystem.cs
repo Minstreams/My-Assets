@@ -82,6 +82,7 @@ namespace GameSystem
                 return;
             }
             Log("Launch Client");
+            DetectLocalIPAddress();
             client = new Client();
         }
         public static void ShutdownServer()

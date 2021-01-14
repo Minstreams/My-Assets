@@ -127,6 +127,7 @@
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Packet.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Thread.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client.cs" />
+    <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Call.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Debug.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Tcp.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Udp.cs" />
