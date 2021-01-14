@@ -21,7 +21,7 @@ namespace GameSystem.Networking
             public string NetId { get; private set; }
             public bool IsHost => NetId.Equals(hostId);
             public IPEndPoint RemoteEndPoint => client.Client.RemoteEndPoint as IPEndPoint;
-            public IPEndPoint UDPEndPoint => new IPEndPoint(RemoteEndPoint.Address, Setting.clientUDPPort);
+            public IPEndPoint UDPEndPoint => new IPEndPoint(RemoteEndPoint.Address, ClientUDPPort);
 
             public void Destroy()
             {
@@ -32,7 +32,7 @@ namespace GameSystem.Networking
                 }
                 isDestroyed = true;
 
-                NetworkSystem.CallServerDisconnection(this);
+                CallServerDisconnection(this);
                 stream?.Close();
                 client?.Close();
                 Log("Server.connection Destroyed.");
@@ -41,22 +41,21 @@ namespace GameSystem.Networking
             public void Send(string message)
             {
                 if (isDestroyed) return;
-                byte[] messageBytes = Encoding.UTF8.GetBytes(message + NetworkSystem.divisionMark);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(message + DivisionMark);
                 stream?.Write(messageBytes, 0, messageBytes.Length);
                 Log("Send to " + NetId + ": " + message);
             }
-            public void Send(PacketBase packet) => Send(NetworkSystem.PacketToString(packet));
+            public void Send(PacketBase packet) => Send(CallPacketToString(packet));
             public void Log(string message) => Server.Log(message + $"(id:{NetId})");
 
             // inner code
-            Server Server => NetworkSystem.server;
             /// <summary>
             /// the client socket
             /// </summary>
             readonly TcpClient client;
             readonly NetworkStream stream;
             readonly Thread receiveThread;
-            readonly byte[] buffer = new byte[NetworkSystem.maxMsgLength];
+            readonly byte[] buffer = new byte[MaxMsgLength];
             string bufferString = "";
 
             bool isDestroyed = false;
@@ -73,7 +72,7 @@ namespace GameSystem.Networking
                 // confirm the net id once connected
                 Send(netId);
 
-                NetworkSystem.CallServerConnection(this);
+                CallServerConnection(this);
 
                 Log("Connected!");
             }
@@ -96,19 +95,19 @@ namespace GameSystem.Networking
                         if (count <= 0)
                         {
                             Log("Disconnected from client.");
-                            Server.CloseConnection(this);
+                            _Server.CloseConnection(this);
                             return;
                         }
                         receiveString = Encoding.UTF8.GetString(buffer, 0, count);
                         Log($"Receive{client.Client.LocalEndPoint}:{receiveString}");
                         bufferString += receiveString;
 
-                        Match match = NetworkSystem.packetCutter.Match(bufferString);
+                        Match match = PacketCutter.Match(bufferString);
                         while (match.Success)
                         {
-                            NetworkSystem.CallProcess(match.Groups[1].Value, this);
+                            CallProcess(match.Groups[1].Value, this);
                             bufferString = match.Groups[2].Value;
-                            match = NetworkSystem.packetCutter.Match(bufferString);
+                            match = PacketCutter.Match(bufferString);
                         }
                     }
                 }
@@ -119,12 +118,12 @@ namespace GameSystem.Networking
                 catch (SocketException ex)
                 {
                     Server.Log(ex);
-                    Server.CloseConnection(this);
+                    _Server.CloseConnection(this);
                 }
                 catch (Exception ex)
                 {
                     Server.Log(ex);
-                    Server.CloseConnection(this);
+                    _Server.CloseConnection(this);
                 }
             }
         }

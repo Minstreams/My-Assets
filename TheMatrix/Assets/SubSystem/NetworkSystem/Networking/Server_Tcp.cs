@@ -24,7 +24,7 @@ namespace GameSystem.Networking
                 Log("TCP already opened!");
                 return;
             }
-            listener = new TcpListener(new IPEndPoint(NetworkSystem.LocalIPAddress, Setting.serverTCPPort));
+            listener = new TcpListener(new IPEndPoint(LocalIPAddress, ServerTCPPort));
             listenThread = new Thread(ListenThread);
             listenThread.Start();
         }
@@ -64,7 +64,7 @@ namespace GameSystem.Networking
                 listener.Start();
                 while (true)
                 {
-                    Log("Listening……:" + Setting.serverTCPPort);
+                    Log("Listening……:" + ServerTCPPort);
                     var client = listener.AcceptTcpClient();
                     // Block --------------------------------
                     connections.Add(new Connection(client, NewTcpId(client.Client.RemoteEndPoint as IPEndPoint)));
@@ -84,7 +84,7 @@ namespace GameSystem.Networking
         }
         string NewTcpId(IPEndPoint ip)
         {
-            if (ip.Address.Equals(NetworkSystem.LocalIPAddress) && ip.Port.Equals(NetworkSystem.LocalIPPort)) return hostId;
+            if (ip.Address.Equals(LocalIPAddress) && ip.Port.Equals(LocalIPPort)) return hostId;
             // generate a new net id
             int output = 1;
             foreach (Connection conn in connections)

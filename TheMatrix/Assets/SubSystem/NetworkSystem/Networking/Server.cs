@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Threading;
 
 namespace GameSystem.Networking
@@ -9,10 +8,8 @@ namespace GameSystem.Networking
     /// </summary>
     public partial class Server
     {
-        /// <summary>
-        /// Reference of Setting
-        /// </summary>
-        static Setting.NetworkSystemSetting Setting => NetworkSystem.Setting;
+        // References
+        static Server _Server;
 
         // interface
         public void Destroy()
@@ -37,14 +34,15 @@ namespace GameSystem.Networking
         bool isDestroyed;
         public Server()
         {
-            udpClient = new UdpClient(Setting.serverUDPPort, AddressFamily.InterNetwork)
+            _Server = this;
+            udpClient = new UdpClient(ServerUDPPort, AddressFamily.InterNetwork)
             {
                 EnableBroadcast = true
             };
             udpReceiveThread = new Thread(UDPReceiveThread);
             udpReceiveThread.Start();
 
-            Log("Server Activated……|UDP:" + Setting.serverUDPPort);
+            Log("Server Activated……|UDP:" + ServerUDPPort);
         }
         ~Server()
         {

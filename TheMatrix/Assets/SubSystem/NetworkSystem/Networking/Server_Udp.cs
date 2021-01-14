@@ -19,7 +19,7 @@ namespace GameSystem.Networking
         public void UDPBroadcast(string message)
         {
             byte[] messageBytes = Encoding.UTF8.GetBytes(message);
-            udpClient.Send(messageBytes, messageBytes.Length, new IPEndPoint(NetworkSystem.BroadcastAddress, Setting.clientUDPPort));
+            udpClient.Send(messageBytes, messageBytes.Length, new IPEndPoint(BroadcastAddress, ClientUDPPort));
             Log($"UDPBroadcast:{message}");
         }
 
@@ -34,12 +34,12 @@ namespace GameSystem.Networking
             {
                 try
                 {
-                    IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, Setting.clientUDPPort);
+                    IPEndPoint remoteIP = new IPEndPoint(IPAddress.Any, ClientUDPPort);
                     byte[] buffer = udpClient.Receive(ref remoteIP);
                     string receiveString = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                     Log($"UDPReceive{remoteIP}:{receiveString}");
                     UDPPacket packet = new UDPPacket(receiveString, remoteIP);
-                    NetworkSystem.CallUDPProcess(packet);
+                    CallUDPProcess(packet);
                 }
                 catch (SocketException ex)
                 {
@@ -55,7 +55,7 @@ namespace GameSystem.Networking
                 catch (Exception ex)
                 {
                     Log(ex);
-                    NetworkSystem.CallMainThread(NetworkSystem.ShutdownServer);
+                    CallShutdownServer();
                     return;
                 }
             }
