@@ -58,6 +58,8 @@ namespace GameSystem
             if (!PlayerPrefs.HasKey(data.ToString()))
             {
                 Log("No data found for " + data.name);
+                data.LoadDefault();
+                data.ApplyData();
                 return;
             }
             string stream = PlayerPrefs.GetString(data.ToString());

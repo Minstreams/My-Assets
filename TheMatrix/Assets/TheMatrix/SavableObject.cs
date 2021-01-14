@@ -17,5 +17,7 @@ namespace GameSystem.Savable
         /// </summary>
         [ContextMenu("UpdateData")]
         public abstract void UpdateData();
+        [ContextMenu("LoadDefault")]
+        public abstract void LoadDefault();
     }
 }

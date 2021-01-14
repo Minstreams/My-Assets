@@ -13,8 +13,10 @@ namespace GameSystem.Setting
         [Label("Savable", true)] public SavableObject[] dataAutoSave;
         [Label] public int targetFrameRate;
 
+#if UNITY_EDITOR
         [HideInInspector] public bool fullTest;
         [HideInInspector] public bool saveData;
         [HideInInspector] public bool debug;
+#endif
     }
 }
