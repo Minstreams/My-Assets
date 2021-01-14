@@ -95,7 +95,11 @@
     <Compile Include="Assets\Scripts\Operator\MaterialFloatSetter.cs" />
     <Compile Include="Assets\Scripts\Operator\MaterialSetter.cs" />
     <Compile Include="Assets\Scripts\Operator\MaterialUnitSetter.cs" />
+    <Compile Include="Assets\Scripts\Operator\RectTransformFadeToggleAll.cs" />
+    <Compile Include="Assets\Scripts\Operator\RectTransformFadein.cs" />
+    <Compile Include="Assets\Scripts\Operator\RectTransformFadeout.cs" />
     <Compile Include="Assets\Scripts\Operator\Rotater.cs" />
+    <Compile Include="Assets\Scripts\Operator\TimeScaleSetter.cs" />
     <Compile Include="Assets\Scripts\Operator\Transformer.cs" />
     <Compile Include="Assets\Scripts\UI\DebugPrinter.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplayer.cs" />

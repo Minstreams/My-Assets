@@ -16,7 +16,7 @@ namespace GameSystem.Linker
         public FloatEvent output;
 
         // Input
-        public void Invoke(float input)
+        public void Invoke()
         {
             output?.Invoke(Random.Range(range.x, range.y));
         }

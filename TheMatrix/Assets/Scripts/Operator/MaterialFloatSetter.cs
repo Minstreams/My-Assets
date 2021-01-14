@@ -62,7 +62,6 @@ namespace GameSystem.Operator
         public IEnumerator setInTime(float target)
         {
             float timer = 0;
-            Vector3 oPos = transform.position;
             for (int i = 0; i < materialFloatPairs.Length; i++)
             {
                 materialFloatPairs[i].value = materialFloatPairs[i].renderer.materials[materialFloatPairs[i].index].GetFloat(paramName);
