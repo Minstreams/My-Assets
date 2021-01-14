@@ -32,16 +32,18 @@ namespace GameSystem.Networking
                 }
                 isDestroyed = true;
 
-                receiveThread?.Abort();
+                NetworkSystem.CallServerDisconnection(this);
                 stream?.Close();
                 client?.Close();
                 Log("Server.connection Destroyed.");
-                NetworkSystem.CallServerDisconnection(this);
+                receiveThread?.Abort();
             }
             public void Send(string message)
             {
+                if (isDestroyed) return;
                 byte[] messageBytes = Encoding.UTF8.GetBytes(message + NetworkSystem.divisionMark);
-                stream.Write(messageBytes, 0, messageBytes.Length);
+                stream?.Write(messageBytes, 0, messageBytes.Length);
+                Log("Send to " + NetId + ": " + message);
             }
             public void Send(PacketBase packet) => Send(NetworkSystem.PacketToString(packet));
             public void Log(string message) => Server.Log(message + $"(id:{NetId})");

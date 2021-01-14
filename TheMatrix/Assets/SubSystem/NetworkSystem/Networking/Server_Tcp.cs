@@ -41,14 +41,14 @@ namespace GameSystem.Networking
         }
         public void DisconnectAll()
         {
-            connections?.ForEach(conn => { conn.Destroy(); });
+            for (int i = connections.Count - 1; i >= 0; --i) connections[i].Destroy();
             connections?.Clear();
             Log("All connections closed!");
         }
         public void CloseConnection(Connection conn)
         {
-            conn.Destroy();
             connections.Remove(conn);
+            conn.Destroy();
         }
         public void Broadcast(string message) => connections.ForEach(conn => conn.Send(message));
 

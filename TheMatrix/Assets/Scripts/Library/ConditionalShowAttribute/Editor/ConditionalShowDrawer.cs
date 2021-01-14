@@ -33,17 +33,16 @@ public class ConditionalShowDrawer : PropertyDrawer
             initialized = true;
         }
 
-        var labelText = string.IsNullOrEmpty(Attr.Label) ? label.text : Attr.Label;
         if (IsConditionMet(property))
         {
             // 条件满足，开始绘制
-            LabelDrawer.DrawLabel(position, property, labelText, Attr.Const, drawerOverride);
+            LabelDrawer.DrawLabel(position, property, Attr.Label, Attr.Const, drawerOverride);
         }
         else if (Attr.AlwaysShow && Event.current.type == EventType.Repaint)
         {
             var tc = GUI.color;
             GUI.color = Color.gray;
-            LabelDrawer.DrawLabel(position, property, labelText, Attr.Const, drawerOverride);
+            LabelDrawer.DrawLabel(position, property, Attr.Label, Attr.Const, drawerOverride);
             GUI.color = tc;
         }
     }

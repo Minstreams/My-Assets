@@ -141,7 +141,6 @@
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Packets_Helper.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\UDPPacket.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\UI\NetworkLogDisplayer.cs" />
-    <Compile Include="Assets\SubSystem\NetworkSystem\UI\NetworkSystemAgentUI.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\Operator\SceneLoadingConfirmer.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\SceneCode.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\SceneSystem.cs" />

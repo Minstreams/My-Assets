@@ -38,11 +38,20 @@ namespace GameSystem
         /// 游戏初始化委托，在进入System场景时调用
         /// </summary>
         public static event System.Action OnGameStart;
+        public static event System.Action OnQuitting;
+
+        public static bool canQuit;
 
         void Awake()
         {
             instance = this;
             _ = Setting;
+            Application.targetFrameRate = Setting.targetFrameRate;
+            Application.wantsToQuit += () =>
+            {
+                OnQuitting?.Invoke();
+                return canQuit;
+            };
         }
         void Start()
         {

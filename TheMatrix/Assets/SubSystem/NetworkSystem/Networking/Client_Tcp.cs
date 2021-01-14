@@ -78,6 +78,7 @@ namespace GameSystem.Networking
             }
             byte[] messageBytes = Encoding.UTF8.GetBytes(message + NetworkSystem.divisionMark);
             stream.Write(messageBytes, 0, messageBytes.Length);
+            Log("Send: " + message);
         }
 
 
@@ -181,6 +182,7 @@ namespace GameSystem.Networking
                         stream?.Close();
                         client?.Close();
                         client = null;
+                        NetworkSystem.CallDisconnection();
                         return;
                     }
                     receiveString = Encoding.UTF8.GetString(buffer, 0, count);
@@ -206,6 +208,7 @@ namespace GameSystem.Networking
                 stream?.Close();
                 client?.Close();
                 client = null;
+                NetworkSystem.CallDisconnection();
                 return;
             }
         }

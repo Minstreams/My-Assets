@@ -9,7 +9,6 @@ namespace GameSystem
     {
         // 游戏流程 -------------
         public static event Action OnFlowStart;
-        public static event Action OnQuitting;
         public static event Action OnLevelStart;
 
 #if UNITY_EDITOR
@@ -33,8 +32,7 @@ namespace GameSystem
                 yield return 0;
                 if (GetGameMessage(GameMessage.Exit))
                 {
-                    OnQuitting?.Invoke();
-                    canQuit = true;
+                    TheMatrix.canQuit = true;
                     Application.Quit();
                     yield break;
                 }

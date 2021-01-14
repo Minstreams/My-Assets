@@ -17,6 +17,7 @@ namespace GameSystem.Networking
         protected static bool IsConnected => NetworkSystem.IsConnected;
         protected static IPAddress LocalIPAddress { get => NetworkSystem.LocalIPAddress; }
         protected static IPAddress ServerIPAddress => NetworkSystem.ServerIPAddress;
+        protected static IPAddress BroadcastAddress => NetworkSystem.BroadcastAddress;
 
         // Thread
         protected void CallMainThread(System.Action action) => NetworkSystem.CallMainThread(action);
@@ -28,6 +29,7 @@ namespace GameSystem.Networking
         // Packet Send
         protected static void ClientSendPacket(PacketBase pkt) => NetworkSystem.ClientSendPacket(pkt);
         protected static void ClientUDPSendPacket(PacketBase pkt, IPEndPoint endPoint) => NetworkSystem.ClientUDPSendPacket(pkt, endPoint);
+        protected static void ServerSendPacket(PacketBase pkt, Server.Connection connection) => NetworkSystem.ServerSendPacket(pkt, connection);
         protected static void ServerBroadcastPacket(PacketBase pkt) => NetworkSystem.ServerBroadcastPacket(pkt);
         protected static void ServerUDPSendPacket(PacketBase pkt, IPEndPoint endPoint) => NetworkSystem.ServerUDPSendPacket(pkt, endPoint);
         protected static void ServerUDPBroadcastPacket(PacketBase pkt) => NetworkSystem.ServerUDPBroadcastPacket(pkt);

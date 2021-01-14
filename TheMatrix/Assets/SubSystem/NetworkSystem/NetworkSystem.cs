@@ -116,6 +116,10 @@ namespace GameSystem
             if (client == null || !client.IsConnected) return;
             client.Send(PacketToString(pkt));
         }
+        public static void ServerSendPacket(PacketBase pkt, Server.Connection connection)
+        {
+            connection.Send(PacketToString(pkt));
+        }
         public static void ServerBroadcastPacket(PacketBase pkt)
         {
             server?.Broadcast(PacketToString(pkt));

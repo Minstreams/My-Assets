@@ -12,14 +12,13 @@ namespace GameSystem
         /// 记录游戏控制信息
         /// </summary>
         static readonly bool[] gameMessageReciver = new bool[System.Enum.GetValues(typeof(GameMessage)).Length];
-        static bool canQuit = false;
 
 
         [RuntimeInitializeOnLoadMethod]
         static void RuntimeInit()
         {
             TheMatrix.OnGameStart += OnGameStart;
-            Application.wantsToQuit += BeforeQuit;
+            TheMatrix.OnQuitting += BeforeQuit;
         }
         static void OnGameStart()
         {
@@ -35,10 +34,9 @@ namespace GameSystem
             }
 #endif
         }
-        static bool BeforeQuit()
+        static void BeforeQuit()
         {
             SendGameMessage(GameMessage.Exit);
-            return canQuit;
         }
 
 

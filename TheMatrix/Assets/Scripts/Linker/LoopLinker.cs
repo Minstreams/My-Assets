@@ -19,7 +19,7 @@ namespace GameSystem.Linker
         public void Invoke()
         {
             outputs[index++]?.Invoke();
-            if (index > outputs.Length) index = 0;
+            if (index >= outputs.Length) index = 0;
         }
         public void ResetIndex()
         {

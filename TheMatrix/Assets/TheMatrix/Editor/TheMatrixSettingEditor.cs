@@ -11,6 +11,7 @@ public class TheMatrixSettingEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+        if (GUILayout.Button("Set Frame Rate")) Application.targetFrameRate = Setting.targetFrameRate;
 
         EditorGUI.BeginChangeCheck();
         GUILayout.BeginVertical("NotificationBackground");
