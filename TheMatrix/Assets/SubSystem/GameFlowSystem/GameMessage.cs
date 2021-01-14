@@ -10,7 +10,7 @@
         Exit,
         GameStart,
         GameOver,
-        Connect,
-        DisConnect,
+        Pause,
+        Resume,
     }
 }
