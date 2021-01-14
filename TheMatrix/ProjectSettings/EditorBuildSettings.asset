@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TheMatrix/System.unity
+    path: Assets/TheMatrix/Scene/System.unity
     guid: d79119ec39179f346814463cc7504f1a
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
