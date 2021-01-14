@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\Operator\Rotater.cs" />
     <Compile Include="Assets\Scripts\Operator\TimeScaleSetter.cs" />
     <Compile Include="Assets\Scripts\Operator\Transformer.cs" />
+    <Compile Include="Assets\Scripts\UI\CustomButton.cs" />
     <Compile Include="Assets\Scripts\UI\DebugPrinter.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplayer.cs" />
     <Compile Include="Assets\SubSystem\GameFlowSystem\GameFlowSystem.cs" />
