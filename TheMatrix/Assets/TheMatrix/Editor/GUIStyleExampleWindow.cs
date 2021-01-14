@@ -27,12 +27,12 @@ public sealed class GUIStyleExampleWindow : EditorWindow
         "verticalSlider",
         "verticalSliderThumb"
     };
+    GUISkin skin;
     GUIStyle[] sList = null;
     int length = 0;
-    public bool inGameSkin = false;
-    public void Init()
+    public void Init(bool inGameSkin)
     {
-        GUISkin skin = EditorGUIUtility.GetBuiltinSkin(inGameSkin ? EditorSkin.Game : EditorSkin.Scene);
+        skin = EditorGUIUtility.GetBuiltinSkin(inGameSkin ? EditorSkin.Game : EditorSkin.Scene);
         sList = skin.customStyles;
         length = dList.Length + sList.Length;
     }
@@ -47,8 +47,7 @@ public sealed class GUIStyleExampleWindow : EditorWindow
         w.wantsMouseMove = false;
         w.autoRepaintOnSceneChange = false;
         w.titleContent = new GUIContent("GUIStyle 样例窗口");
-        w.inGameSkin = false;
-        w.Init();
+        w.Init(false);
     }
     [MenuItem("MatrixTool/GUIStyle 样例窗口 - InGameSkin")]
     static void Example_InGameSkin()
@@ -58,8 +57,7 @@ public sealed class GUIStyleExampleWindow : EditorWindow
         w.wantsMouseMove = false;
         w.autoRepaintOnSceneChange = false;
         w.titleContent = new GUIContent("GUIStyle 样例窗口 - InGameSkin");
-        w.inGameSkin = true;
-        w.Init();
+        w.Init(true);
     }
 
     int page = 0;
@@ -72,8 +70,8 @@ public sealed class GUIStyleExampleWindow : EditorWindow
         mScrollPos = EditorGUILayout.BeginScrollView(mScrollPos);
         for (int i = page * itemsPerPage; i < length && i < (page + 1) * itemsPerPage; ++i)
         {
-            string name = i < dList.Length ? dList[i] : sList[i - dList.Length].name;
-            GUIStyle style = i < dList.Length ? dList[i] : sList[i - dList.Length];
+            GUIStyle style = i < dList.Length ? skin.GetStyle(dList[i]) : sList[i - dList.Length];
+            string name = style.name;
             GUILayout.BeginHorizontal();
             EditorGUILayout.SelectableLabel(name, GUILayout.MaxWidth(250));
             if (isButton) GUILayout.Button(text, style, GUILayout.ExpandWidth(expandWidth));
