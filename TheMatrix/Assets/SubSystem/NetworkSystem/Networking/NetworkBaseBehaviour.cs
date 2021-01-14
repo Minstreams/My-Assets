@@ -19,6 +19,9 @@ namespace GameSystem.Networking
         protected static IPAddress ServerIPAddress => NetworkSystem.ServerIPAddress;
         protected static IPAddress BroadcastAddress => NetworkSystem.BroadcastAddress;
 
+        protected float Timer { get => NetworkSystem.timer; set => NetworkSystem.timer = value; }
+        protected float ServerTimer => NetworkSystem.ServerTimer;
+
         // Thread
         protected void CallMainThread(System.Action action) => NetworkSystem.CallMainThread(action);
 

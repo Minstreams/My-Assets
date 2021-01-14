@@ -10,12 +10,13 @@ namespace GameSystem.Networking
     public abstract class NetworkPlayer : NetworkBaseBehaviour
     {
         [Label] public string netId;
+        protected bool IsLocalPlayer => isIdActive && netId == NetworkSystem.NetId;
 
         // interface
         /// <summary>
         /// must call this manually!
         /// </summary>
-        public void ActivateId(string netId)
+        public virtual void ActivateId(string netId)
         {
             if (isIdActive) return;
             isIdActive = true;
@@ -23,7 +24,7 @@ namespace GameSystem.Networking
             NetworkSystem.ProcessPacketFromId(netId, _TCPProcess);
             NetworkSystem.ListenPacketToId(netId, _TCPReceive);
         }
-        public void DeactivateId()
+        public virtual void DeactivateId()
         {
             if (!isIdActive) return;
             isIdActive = false;

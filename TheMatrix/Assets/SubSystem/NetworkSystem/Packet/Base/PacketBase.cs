@@ -14,5 +14,6 @@ public class PacketBase
     // interface
     public Type PktType => Type.GetType(t);
     public bool MatchType(Type type) => type.FullName == t;
+    public bool MatchType<T>() => typeof(T).FullName == t;
     public bool IsSubclassOf(Type type) => PktType.IsSubclassOf(type);
 }

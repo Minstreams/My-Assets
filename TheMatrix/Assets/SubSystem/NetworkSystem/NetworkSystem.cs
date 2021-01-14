@@ -72,6 +72,7 @@ namespace GameSystem
                 return;
             }
             Log("Launch Server");
+            DetectLocalIPAddress();
             server = new Server();
         }
         public static void LaunchClient()
@@ -115,7 +116,8 @@ namespace GameSystem
         public static void ClientSendPacket(PacketBase pkt)
         {
             if (client == null || !client.IsConnected) return;
-            client.Send(PacketToString(pkt));
+            if (latencyOverride > 0 && !IsHost) CallDelayMain(() => client.Send(PacketToString(pkt)));
+            else client.Send(PacketToString(pkt));
         }
         public static void ServerSendPacket(PacketBase pkt, Server.Connection connection)
         {

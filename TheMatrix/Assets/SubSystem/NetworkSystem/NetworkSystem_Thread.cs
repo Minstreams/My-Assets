@@ -11,6 +11,7 @@ namespace GameSystem
         // Thread control
         readonly static Queue<Action> mainThreadActionQueue = new Queue<Action>();
 
+        static object threadLocker = new object();
         [RuntimeInitializeOnLoadMethod]
         static void RuntimeInit()
         {
@@ -21,6 +22,7 @@ namespace GameSystem
         static void OnGameStart()
         {
             StartCoroutine(MainThread());
+            StartCoroutine(DelayThread());
         }
         static void OnQuitting()
         {
@@ -41,10 +43,16 @@ namespace GameSystem
         /// <summary>
         /// Call an action in main thread
         /// </summary>
-        public static void CallMainThread(Action action) => mainThreadActionQueue.Enqueue(action);
+        public static void CallMainThread(Action action)
+        {
+            lock (threadLocker)
+            {
+                mainThreadActionQueue.Enqueue(action);
+            }
+        }
         /// <summary>
         /// Call Debug.Log in main thread
         /// </summary>
-        public static void CallLog(string message) => mainThreadActionQueue.Enqueue(() => Log(message));
+        public static void CallLog(string message) => CallMainThread(() => Log(message));
     }
 }

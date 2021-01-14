@@ -69,55 +69,15 @@ namespace GameSystem.Operator
 
         protected override void OnUI()
         {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Server UDP Port:", GUILayout.Width(110));
-            try
-            {
-                NetworkSystem.Setting.serverUDPPort = int.Parse(GUILayout.TextField(NetworkSystem.Setting.serverUDPPort.ToString()));
-            }
-            catch { };
-            GUILayout.EndHorizontal();
+            TitleLabel("Network System");
 
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Client UDP Port:", GUILayout.Width(110));
-            try
-            {
-                NetworkSystem.Setting.clientUDPPort = int.Parse(GUILayout.TextField(NetworkSystem.Setting.clientUDPPort.ToString()));
-            }
-            catch { };
-            GUILayout.EndHorizontal();
+            NetworkSystem.Setting.serverUDPPort = IntField("Server UDP Port", NetworkSystem.Setting.serverUDPPort);
+            NetworkSystem.Setting.clientUDPPort = IntField("Client UDP Port", NetworkSystem.Setting.clientUDPPort);
+            NetworkSystem.Setting.serverTCPPort = IntField("Server TCP Port", NetworkSystem.Setting.serverTCPPort);
+            NetworkSystem.Setting.clientTCPPortRange.x = IntField("Client TCP Min", NetworkSystem.Setting.clientTCPPortRange.x);
+            NetworkSystem.Setting.clientTCPPortRange.y = IntField("Client TCP Max", NetworkSystem.Setting.clientTCPPortRange.y);
+            serverAddress = StringField("Server Address", serverAddress);
 
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Server TCP Port:", GUILayout.Width(110));
-            try
-            {
-                NetworkSystem.Setting.serverTCPPort = int.Parse(GUILayout.TextField(NetworkSystem.Setting.serverTCPPort.ToString()));
-            }
-            catch { };
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Client TCP Min:", GUILayout.Width(110));
-            try
-            {
-                NetworkSystem.Setting.clientTCPPortRange.x = int.Parse(GUILayout.TextField(NetworkSystem.Setting.clientTCPPortRange.x.ToString()));
-            }
-            catch { };
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Client TCP Max:", GUILayout.Width(110));
-            try
-            {
-                NetworkSystem.Setting.clientTCPPortRange.y = int.Parse(GUILayout.TextField(NetworkSystem.Setting.clientTCPPortRange.y.ToString()));
-            }
-            catch { };
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Server Address:", GUILayout.Width(100));
-            serverAddress = GUILayout.TextField(serverAddress);
-            GUILayout.EndHorizontal();
             if (GUILayout.Button("LaunchServer")) LaunchServer();
             if (GUILayout.Button("LaunchClient")) LaunchClient();
             if (GUILayout.Button("ShutdownServer")) ShutdownServer();

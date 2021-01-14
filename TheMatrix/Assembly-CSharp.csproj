@@ -127,6 +127,7 @@
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Event.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Packet.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Thread.cs" />
+    <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Timer.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Call.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Debug.cs" />
@@ -147,9 +148,11 @@
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Base\PacketBase.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Base\Pkt.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Base\Pktid.cs" />
-    <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Packets_Helper.cs" />
+    <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Packets_Timer.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\UDPPacket.cs" />
+    <Compile Include="Assets\SubSystem\NetworkSystem\UI\LatencySimulator.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\UI\NetworkLogDisplayer.cs" />
+    <Compile Include="Assets\SubSystem\NetworkSystem\UI\NetworkStatusUI.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\Operator\SceneLoadingConfirmer.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\SceneCode.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\SceneSystem.cs" />

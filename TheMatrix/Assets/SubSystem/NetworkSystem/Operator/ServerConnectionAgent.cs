@@ -64,18 +64,11 @@ namespace GameSystem.Operator
 
         protected override void OnUI()
         {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Message:", GUILayout.Width(60));
-            message = GUILayout.TextField(message);
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Connection Index:", GUILayout.Width(110));
-            try
-            {
-                connectionIndex = int.Parse(GUILayout.TextField(connectionIndex.ToString()));
-            }
-            catch { };
-            GUILayout.EndHorizontal();
+            TitleLabel("Server Agent");
+
+            message = StringField("Message", message);
+            connectionIndex = IntField("Connection Index", connectionIndex);
+
             if (GUILayout.Button("Init")) Init();
             if (connection != null)
             {

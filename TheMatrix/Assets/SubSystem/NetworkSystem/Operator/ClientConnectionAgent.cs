@@ -78,13 +78,11 @@ namespace GameSystem.Operator
 
         protected override void OnUI()
         {
+            TitleLabel("Client Agent");
             if (GUILayout.Button("Init")) Init();
             if (connection != null)
             {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("Message:", GUILayout.Width(60));
-                message = GUILayout.TextField(message);
-                GUILayout.EndHorizontal();
+                message = StringField("Message", message);
 
                 if (GUILayout.Button("Send")) Send();
                 if (GUILayout.Button("UDPSend")) UDPSend();

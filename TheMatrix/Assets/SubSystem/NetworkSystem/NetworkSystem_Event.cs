@@ -95,19 +95,40 @@ namespace GameSystem
         public static void CallUDPReceive(UDPPacket packet) => OnUDPReceive?.Invoke(packet);
         public static void CallReceive(string message)
         {
-            OnReceive?.Invoke(message);
-            var pkt = StringToPacket(message);
-            if (pkt == null) return;
-            if (tcpDistributors.ContainsKey(pkt.t))
+            if (latencyOverride > 0 && !IsHost) CallDelayMain(() =>
             {
-                tcpDistributors[pkt.t]?.Invoke(pkt);
-            }
-            if (pkt.IsSubclassOf(typeof(Pktid)))
-            {
-                var pktTid = pkt as Pktid;
-                if (tcpIdDistributors.ContainsKey(pktTid.id))
+                OnReceive?.Invoke(message);
+                var pkt = StringToPacket(message);
+                if (pkt == null) return;
+                if (tcpDistributors.ContainsKey(pkt.t))
                 {
-                    tcpIdDistributors[pktTid.id]?.Invoke(pktTid);
+                    tcpDistributors[pkt.t]?.Invoke(pkt);
+                }
+                if (pkt.IsSubclassOf(typeof(Pktid)))
+                {
+                    var pktTid = pkt as Pktid;
+                    if (tcpIdDistributors.ContainsKey(pktTid.id))
+                    {
+                        tcpIdDistributors[pktTid.id]?.Invoke(pktTid);
+                    }
+                }
+            });
+            else
+            {
+                OnReceive?.Invoke(message);
+                var pkt = StringToPacket(message);
+                if (pkt == null) return;
+                if (tcpDistributors.ContainsKey(pkt.t))
+                {
+                    tcpDistributors[pkt.t]?.Invoke(pkt);
+                }
+                if (pkt.IsSubclassOf(typeof(Pktid)))
+                {
+                    var pktTid = pkt as Pktid;
+                    if (tcpIdDistributors.ContainsKey(pktTid.id))
+                    {
+                        tcpIdDistributors[pktTid.id]?.Invoke(pktTid);
+                    }
                 }
             }
         }
