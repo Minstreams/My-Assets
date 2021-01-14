@@ -112,6 +112,7 @@
     <Compile Include="Assets\SubSystem\InputSystem\InputKey.cs" />
     <Compile Include="Assets\SubSystem\InputSystem\InputSystem.cs" />
     <Compile Include="Assets\SubSystem\InputSystem\InputSystemSetting.cs" />
+    <Compile Include="Assets\SubSystem\InputSystem\Operator\InputKeyTrigger.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Attribute\TCPConnectionAttribute.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Attribute\TCPDisconnectionAttribute.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Attribute\TCPProcessAttribute.cs" />
