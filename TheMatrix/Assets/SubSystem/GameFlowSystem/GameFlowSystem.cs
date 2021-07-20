@@ -22,9 +22,10 @@ namespace GameSystem
         }
         static void OnGameStart()
         {
+            Time.timeScale = 1;
             // 在System场景加载后调用
 #if UNITY_EDITOR
-            if (!TheMatrix.Setting.fullTest) QuickTest();
+            if (!TheMatrix.EditorSetting.fullTest) QuickTest();
             else
             {
 #endif
@@ -36,6 +37,7 @@ namespace GameSystem
         }
         static void BeforeQuit()
         {
+            Time.timeScale = 1;
             SendGameMessage(GameMessage.Exit);
         }
 

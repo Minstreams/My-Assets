@@ -16,6 +16,16 @@ namespace GameSystem
         {
             OnFlowStart?.Invoke();
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(0);
+            StartCoroutine(QuickTestCoroutine());
+            OnLevelStart?.Invoke();
+        }
+        static IEnumerator QuickTestCoroutine()
+        {
+            //while (true)
+            //{
+            //    yield return 0;
+            //    // ...
+            //}
         }
 #endif
         static IEnumerator Start()
@@ -23,7 +33,7 @@ namespace GameSystem
             OnFlowStart?.Invoke();
             yield return 0;
             StartCoroutine(CheckExit());
-            StartCoroutine(StartMenu());
+            StartCoroutine(Logo());
         }
         static IEnumerator CheckExit()
         {
@@ -38,9 +48,11 @@ namespace GameSystem
                 }
             }
         }
-        static IEnumerator StartMenu()
+        static IEnumerator Logo()
         {
-            SceneSystem.LoadScene(SceneCode.startMenu);
+            Cursor.visible = false;
+            SceneSystem.LoadScene(SceneCode.logo);
+            SceneSystem.ConfirmLoadScene();
             yield return 0;
 
             ResetGameMessage();
@@ -50,20 +62,11 @@ namespace GameSystem
                 if (GetGameMessage(GameMessage.Next)) break;
             }
 
-            StartCoroutine(Level0());
+            StartCoroutine(StartMenu());
         }
-        static IEnumerator Level0()
+        static IEnumerator StartMenu()
         {
-            yield return SceneSystem.LoadSceneCoroutine(SceneCode.level0);
-            yield return 0;
-
-            OnLevelStart?.Invoke();
-
-            ResetGameMessage();
-            while (true)
-            {
-                yield return 0;
-            }
+            // todo
         }
     }
 }
