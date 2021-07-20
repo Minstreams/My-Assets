@@ -123,24 +123,3 @@ public sealed class GUIStyleExampleWindow : EditorWindow
     }
 }
 
-tal();
-            {
-                if (GUILayout.Button("prev", "LargeButton", GUILayout.MaxWidth(164)))
-                {
-                    page--;
-                    if (page < 0) page = 0;
-                }
-                GUILayout.Label(page.ToString(), "DropzoneStyle");
-
-                if (GUILayout.Button("next", "LargeButton", GUILayout.MaxWidth(164)))
-                {
-                    page++;
-                    while (page * itemsPerPage > length) page--;
-                }
-            }
-            GUILayout.EndHorizontal();
-        }
-        GUILayout.EndVertical();
-    }
-}
-
