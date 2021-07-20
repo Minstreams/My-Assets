@@ -57,6 +57,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Operator\DynamicAudioSource.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Tcp.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Base\Pktid.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\NetworkObject.cs" />
@@ -113,7 +114,6 @@
     <Compile Include="Assets\Scripts\Operator\MaterialFloatSetter.cs" />
     <Compile Include="Assets\Scripts\Operator\CanvasMaterialFloatSetter.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Packet.cs" />
-    <Compile Include="Assets\Scripts\Operator\RectTransformFadeToggleAll.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Operator\ServerConnectionAgent.cs" />
     <Compile Include="Assets\SubSystem\SceneSystem\Operator\SceneLoadingConfirmer.cs" />
     <Compile Include="Assets\SubSystem\GameFlowSystem\GameMessage.cs" />
@@ -131,7 +131,6 @@
     <Compile Include="Assets\Scripts\Library\LabelAttribute\LabelAttribute.cs" />
     <Compile Include="Assets\Scripts\Linker\LerpVec2Linker.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Server.cs" />
-    <Compile Include="Assets\Scripts\Operator\RectTransformFadein.cs" />
     <Compile Include="Assets\Scripts\Operator\MaterialUnitSetter.cs" />
     <Compile Include="Assets\TheMatrix\TheMatrix_Coroutine.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Server_Udp.cs" />
@@ -143,7 +142,6 @@
     <Compile Include="Assets\Scripts\Operator\Rotater.cs" />
     <Compile Include="Assets\Scripts\Linker\StepLinker.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Attribute\TCPConnectionAttribute.cs" />
-    <Compile Include="Assets\Scripts\Operator\RectTransformFadeout.cs" />
     <Compile Include="Assets\TheMatrix\TheMatrixSetting.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Client_Call.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Server_Debug.cs" />
