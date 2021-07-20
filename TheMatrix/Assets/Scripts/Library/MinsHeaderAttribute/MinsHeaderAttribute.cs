@@ -22,6 +22,7 @@ public class MinsHeaderAttribute : PropertyAttribute
     public MinsHeaderAttribute(string summary)
     {
         this.Summary = summary;
+        this.Style = getStyle(SummaryType.Header);
     }
     public MinsHeaderAttribute(string summary, string style)
     {
@@ -66,7 +67,6 @@ public class MinsHeaderAttribute : PropertyAttribute
             case SummaryType.PreTitleLinker: return "ChannelStripSendReturnBar";
             case SummaryType.PreTitleOperator: return "ChannelStripAttenuationBar";
             case SummaryType.PreTitleSavable: return "ChannelStripEffectBar";
-
         }
         return "label";
     }
