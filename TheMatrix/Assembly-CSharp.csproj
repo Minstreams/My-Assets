@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{896087D7-49F5-25AF-1167-EF8BE4459816}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Scripts\Library\ConditionalShowAttribute\ConditionalShowAttribute.cs" />
     <Compile Include="Assets\Scripts\Linker\TimerLinker.cs" />
     <Compile Include="Assets\Scripts\Operator\TimeScaleSetter.cs" />
+    <Compile Include="Assets\TheMatrix\TheMatrixEditorSetting.cs" />
     <Compile Include="Assets\TheMatrix\TheMatrix_Savable.cs" />
     <Compile Include="Assets\Scripts\Linker\SimpleLinker.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Server_Tcp.cs" />
