@@ -50,9 +50,9 @@ MonoBehaviour:
     comment: 
     feedback: 
     timestamp: 63755155706.32769
-  managerIcon: {fileID: 2800000, guid: 951848ba8b6205940a9bd1b8fdd4d796, type: 3}
+  managerIcon: {fileID: 2800000, guid: 7b95323b3e883144d989cca1dde27434, type: 3}
   managerTitle: Requirements
-  inspectorIcon: {fileID: 2800000, guid: 0615fe8910911be4299d5604a54db99a, type: 3}
+  inspectorIcon: {fileID: 2800000, guid: 52dd2e7bbea87b449b29ee5fd9fb9509, type: 3}
   inspectorTitle: Requirement Inspector
   reqLabelHeight: 24
   reqRectMargin: {x: 6, y: 6}
@@ -271,10 +271,10 @@ MonoBehaviour:
   uncheckedColor: {r: 1, g: 0.9214484, b: 0, a: 1}
   checkedColor: {r: 0.3803922, g: 1, b: 0.8047364, a: 1}
   stableColor: {r: 0, g: 0.831342, b: 1, a: 1}
-  pendingTex: {fileID: 2800000, guid: 945f4ecec6df62244b9ebcc363833642, type: 3}
-  uncheckedTex: {fileID: 2800000, guid: db7aaa162a1a5a54b826d15b5b20fb06, type: 3}
-  checkedTex: {fileID: 2800000, guid: 2b06c35710693f640babb3dcf747d06a, type: 3}
-  stableTex: {fileID: 2800000, guid: d51d89aa019127a4e9c5bec4e423a4d6, type: 3}
+  pendingTex: {fileID: 2800000, guid: da0c455f4d37d5948b55bb36bf203c40, type: 3}
+  uncheckedTex: {fileID: 2800000, guid: 7fb3aae42493c104faca95099d5d1dcf, type: 3}
+  checkedTex: {fileID: 2800000, guid: ba84610a4f049d449a40d0d4b00ad997, type: 3}
+  stableTex: {fileID: 2800000, guid: 3b6d348a732ef8d409bbd95e00756f50, type: 3}
   reqNameWidth: 128
   nameBoxStyle:
     m_Name: MinMaxHorizontalSliderThumb
@@ -484,7 +484,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 0
     m_StretchHeight: 0
-  responsiblePersonTex: {fileID: 2800000, guid: 9c63b51755ec8c845b857cc73a35d606,
+  responsiblePersonTex: {fileID: 2800000, guid: 2af24eb0881bf0a43a657ef2d3d7eb48,
     type: 3}
   basicHeight: 124
   indentWidth: 14

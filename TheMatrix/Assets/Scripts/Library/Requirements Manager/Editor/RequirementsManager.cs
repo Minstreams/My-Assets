@@ -8,10 +8,9 @@ namespace GameSystem.Requirements
 {
     public class RequirementsManager : EditorWindow
     {
-        const string windowOpenLocker = "RequirementsManagerLocker";
         const string allStr = "All";
 
-        public static RequirementsManagerData Data => data == null ? data = (RequirementsManagerData)EditorGUIUtility.Load("RequirementsManagerData.asset") : data;
+        public static RequirementsManagerData Data => data == null ? data = (RequirementsManagerData)EditorGUIUtility.Load("RequirementsManager/RequirementsManagerData.asset") : data;
         static RequirementsManagerData data;
 
         public static RequirementsManagerLocalData LocalData
@@ -20,18 +19,18 @@ namespace GameSystem.Requirements
             {
                 if (localData == null)
                 {
-                    if (!AssetDatabase.IsValidFolder("Assets/Editor Default Resources/Local"))
+                    if (!AssetDatabase.IsValidFolder("Assets/Editor Default Resources/RequirementsManager/Local"))
                     {
-                        AssetDatabase.CreateFolder("Assets/Editor Default Resources", "Local");
+                        AssetDatabase.CreateFolder("Assets/Editor Default Resources/RequirementsManager", "Local");
                     }
-                    if (!System.IO.File.Exists("Assets/Editor Default Resources/Local/RequirementsManagerLocalData.asset"))
+                    if (!System.IO.File.Exists("Assets/Editor Default Resources/RequirementsManager/Local/RequirementsManagerLocalData.asset"))
                     {
                         localData = CreateInstance<RequirementsManagerLocalData>();
-                        AssetDatabase.CreateAsset(localData, "Assets/Editor Default Resources/Local/RequirementsManagerLocalData.asset");
+                        AssetDatabase.CreateAsset(localData, "Assets/Editor Default Resources/RequirementsManager/Local/RequirementsManagerLocalData.asset");
                     }
                     else
                     {
-                        localData = (RequirementsManagerLocalData)EditorGUIUtility.Load("Local/RequirementsManagerLocalData.asset");
+                        localData = (RequirementsManagerLocalData)EditorGUIUtility.Load("RequirementsManager/Local/RequirementsManagerLocalData.asset");
                     }
                 }
                 return localData;
@@ -497,13 +496,14 @@ namespace GameSystem.Requirements
         #endregion
 
         #region Static Window Functions
-        [InitializeOnLoadMethod]
-        static void OpenWindowOnLoad()
-        {
-            if (SessionState.GetBool(windowOpenLocker, false)) return;
-            OpenWindow();
-            SessionState.SetBool(windowOpenLocker, true);
-        }
+        //const string windowOpenLocker = "RequirementsManagerLocker";
+        //[InitializeOnLoadMethod]
+        //static void OpenWindowOnLoad()
+        //{
+        //    if (SessionState.GetBool(windowOpenLocker, false)) return;
+        //    OpenWindow();
+        //    SessionState.SetBool(windowOpenLocker, true);
+        //}
 
         [MenuItem("MatrixTool/Requirements Manager _F1", false, 92)]
         static void OpenWindow()

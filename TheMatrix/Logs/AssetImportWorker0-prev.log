@@ -15,11 +15,11 @@ G:/Documents/GitHub/My-Assets/TheMatrix
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56498
+52990
 Successfully changed project path to: G:/Documents/GitHub/My-Assets/TheMatrix
 G:/Documents/GitHub/My-Assets/TheMatrix
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 42.53 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 45.02 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.12f1c1 (5887f62ce680)
 [Subsystems] Discovering subsystems at path G:/Unity Editor/2020.3.12f1c1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,40 @@ Initialize mono
 Mono path[0] = 'G:/Unity Editor/2020.3.12f1c1/Editor/Data/Managed'
 Mono path[1] = 'G:/Unity Editor/2020.3.12f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'G:/Unity Editor/2020.3.12f1c1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56680
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56108
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: G:/Unity Editor/2020.3.12f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001698 seconds.
+Registered in 0.001264 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 33.13 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 32.59 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.632 seconds
+- Completed reload, in  1.330 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003093 seconds.
+Registered in 0.002997 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.34 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
+<RI> Initialized touch support.
+<RI> Initializing input.
+<RI> Input initialized.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.116 seconds
+- Completed reload, in  1.363 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.40 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1528 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 67.8 MB.
-System memory in use after: 67.9 MB.
+Unloading 1532 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.9 MB.
+System memory in use after: 71.8 MB.
 
-Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 1962.
-Total: 2.440900 ms (FindLiveObjects: 0.296700 ms CreateObjectMapping: 0.146100 ms MarkObjects: 1.926900 ms  DeleteObjects: 0.069700 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 1972.
+Total: 3.904800 ms (FindLiveObjects: 0.203800 ms CreateObjectMapping: 0.078300 ms MarkObjects: 3.509000 ms  DeleteObjects: 0.112000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -80,61 +83,62 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/UI/UISettingPanel.cs
-  artifactKey: Guid(8370c39c0c6674441a954ae2d07b52a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/UISettingPanel.cs using Guid(8370c39c0c6674441a954ae2d07b52a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce79953c7b5cf59fa0169b0264be2410') in 0.048949 seconds 
-  Import took 0.052989 seconds .
+  path: Assets/Editor Default Resources/RequirementsManagerData.asset
+  artifactKey: Guid(f3eb4114c308ec048a74d299d63e703c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/RequirementsManagerData.asset using Guid(f3eb4114c308ec048a74d299d63e703c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83cfe6cba8a8cd5bdb744816c3215986') in 0.055008 seconds 
+  Import took 0.058792 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 50.693903 seconds.
-  path: Assets/Scripts/UI/UISettingPanel.cs
-  artifactKey: Guid(8370c39c0c6674441a954ae2d07b52a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/UI/UISettingPanel.cs using Guid(8370c39c0c6674441a954ae2d07b52a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3384066d8f2edb952b20114d9a1e8474') in 0.002480 seconds 
-  Import took 0.006337 seconds .
+  Time since last request: 0.795817 seconds.
+  path: Assets/Editor Default Resources/Local
+  artifactKey: Guid(0c6a9693d6050f942bc2ca76b906f959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/Local using Guid(0c6a9693d6050f942bc2ca76b906f959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90d68b7d071d4593e39f971503377839') in 0.008554 seconds 
+  Import took 0.012024 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 409.337068 seconds.
+  path: Assets/Editor Default Resources
+  artifactKey: Guid(ce6feb46a0983224390af5304f4a314a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources using Guid(ce6feb46a0983224390af5304f4a314a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aeaf4b44603a0628914591c4b9d61e1') in 0.010419 seconds 
+  Import took 0.014761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.006662 seconds.
+  path: Assets/Editor Default Resources
+  artifactKey: Guid(ce6feb46a0983224390af5304f4a314a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources using Guid(ce6feb46a0983224390af5304f4a314a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aeaf4b44603a0628914591c4b9d61e1') in 0.002631 seconds 
+  Import took 0.006663 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.995363 seconds.
+  path: Assets/Editor Default Resources/TheMatrixEditorSetting.asset
+  artifactKey: Guid(7e338378d39997344a5a2fa2e697705f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/TheMatrixEditorSetting.asset using Guid(7e338378d39997344a5a2fa2e697705f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e297c587d52e343649586ed00461207') in 0.010054 seconds 
+  Import took 0.013337 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003661 seconds.
+Registered in 0.003583 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.39 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-NullReferenceException: Object reference not set to an instance of an object
-  at GameSystem.Requirements.RequirementsManager.RefreshFilters () [0x00084] in G:\Documents\GitHub\My-Assets\TheMatrix\Assets\Scripts\Library\Requirements Manager\Editor\RequirementsManager.cs:392 
-  at GameSystem.Requirements.RequirementsManager.OnEnable () [0x00006] in G:\Documents\GitHub\My-Assets\TheMatrix\Assets\Scripts\Library\Requirements Manager\Editor\RequirementsManager.cs:133 
-UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType(Type, Boolean)
-UnityEngine.ScriptableObject:CreateInstance(Type)
-UnityEditor.EditorWindow:GetWindowPrivate(Type, Boolean, String, Boolean)
-UnityEditor.EditorWindow:GetWindow(Type, Boolean, String, Boolean)
-UnityEditor.EditorWindow:GetWindow(Boolean, String, Boolean)
-UnityEditor.EditorWindow:GetWindow()
-GameSystem.Requirements.RequirementsManager:OpenWindow() (at Assets\Scripts\Library\Requirements Manager\Editor\RequirementsManager.cs:511)
-GameSystem.Requirements.RequirementsManager:OpenWindowOnLoad() (at Assets\Scripts\Library\Requirements Manager\Editor\RequirementsManager.cs:504)
-
-(Filename: Assets/Scripts/Library/Requirements Manager/Editor/RequirementsManager.cs Line: 392)
-
-<RI> Initialized touch support.
-<RI> Initializing input.
-<RI> Input initialized.
-NullReferenceException: Object reference not set to an instance of an object
-  at GameSystem.Requirements.RequirementsManager.OpenWindow () [0x00005] in G:\Documents\GitHub\My-Assets\TheMatrix\Assets\Scripts\Library\Requirements Manager\Editor\RequirementsManager.cs:512 
-  at GameSystem.Requirements.RequirementsManager.OpenWindowOnLoad () [0x0000e] in G:\Documents\GitHub\My-Assets\TheMatrix\Assets\Scripts\Library\Requirements Manager\Editor\RequirementsManager.cs:504 
-
-(Filename: Assets/Scripts/Library/Requirements Manager/Editor/RequirementsManager.cs Line: 512)
-
 Mono: successfully reloaded assembly
 - Completed reload, in  1.265 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1524 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 71.9 MB.
-System memory in use after: 71.8 MB.
+Unloading 1525 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.6 MB.
+System memory in use after: 71.7 MB.
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 1972.
-Total: 3.346200 ms (FindLiveObjects: 0.153100 ms CreateObjectMapping: 0.051100 ms MarkObjects: 3.092600 ms  DeleteObjects: 0.048500 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 1976.
+Total: 2.946100 ms (FindLiveObjects: 0.149400 ms CreateObjectMapping: 0.055700 ms MarkObjects: 2.684300 ms  DeleteObjects: 0.055600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -147,4 +151,36 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1589.679825 seconds.
+  path: Assets/Editor Default Resources/RequirementsManager
+  artifactKey: Guid(f2ed6c6f4fbf8b04b9ef7568286bacca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/RequirementsManager using Guid(f2ed6c6f4fbf8b04b9ef7568286bacca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b3468ef6b265b54230882c6a973940d') in 0.010352 seconds 
+  Import took 0.013959 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001418 seconds.
+  path: Assets/Editor Default Resources/RequirementsManager
+  artifactKey: Guid(f2ed6c6f4fbf8b04b9ef7568286bacca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/RequirementsManager using Guid(f2ed6c6f4fbf8b04b9ef7568286bacca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b3468ef6b265b54230882c6a973940d') in 0.002010 seconds 
+  Import took 0.005220 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.207973 seconds.
+  path: Assets/Editor Default Resources/RequirementsManager/RequirementsManagerData.asset
+  artifactKey: Guid(536309412c40ec746bd02b1cf1960bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/RequirementsManager/RequirementsManagerData.asset using Guid(536309412c40ec746bd02b1cf1960bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e10132938be9661d5ae9e2afdd93c493') in 0.017479 seconds 
+  Import took 0.021009 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.043479 seconds.
+  path: Assets/Editor Default Resources/RequirementsManager/RequirementsManagerData.asset
+  artifactKey: Guid(536309412c40ec746bd02b1cf1960bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Editor Default Resources/RequirementsManager/RequirementsManagerData.asset using Guid(536309412c40ec746bd02b1cf1960bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e10132938be9661d5ae9e2afdd93c493') in 0.003962 seconds 
+  Import took 0.007083 seconds .
+
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
