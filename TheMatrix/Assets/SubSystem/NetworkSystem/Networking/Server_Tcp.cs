@@ -35,9 +35,9 @@ namespace GameSystem.Networking
                 Log("TCP already closed!");
                 return;
             }
-            listenThread?.Abort();
             listener?.Stop();
             listener = null;
+            listenThread?.Abort();
         }
         public void DisconnectAll()
         {
