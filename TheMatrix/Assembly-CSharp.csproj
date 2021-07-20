@@ -62,10 +62,10 @@
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\NetworkObject.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Attribute\TCPReceiveAttribute.cs" />
     <Compile Include="Assets\Scripts\Operator\Transformer.cs" />
-    <Compile Include="Assets\Scripts\UI\CustomButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Debug\CustomButton.cs" />
     <Compile Include="Assets\TheMatrix\SubSystem.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\UDPPacket.cs" />
-    <Compile Include="Assets\Scripts\UI\FPSDisplayer.cs" />
+    <Compile Include="Assets\Scripts\UI\Debug\FPSDisplayer.cs" />
     <Compile Include="Assets\SubSystem\InputSystem\InputKey.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Packet\Base\Pkt.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\NetworkPlayer.cs" />
@@ -94,7 +94,7 @@
     <Compile Include="Assets\TheMatrix\TheMatrix_Debug.cs" />
     <Compile Include="Assets\SubSystem\InputSystem\InputSystemSetting.cs" />
     <Compile Include="Assets\SubSystem\GameFlowSystem\GameFlowSystemSetting.cs" />
-    <Compile Include="Assets\Scripts\UI\DebugPrinter.cs" />
+    <Compile Include="Assets\Scripts\UI\Debug\DebugPrinter.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Operator\ClientConnectionAgent.cs" />
     <Compile Include="Assets\Scripts\Operator\AutoRotater.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Attribute\TCPProcessAttribute.cs" />
@@ -136,7 +136,7 @@
     <Compile Include="Assets\TheMatrix\TheMatrix_Coroutine.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\Networking\Server_Udp.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystemSetting.cs" />
-    <Compile Include="Assets\Scripts\Linker\ThreadholdFloatLinker.cs" />
+    <Compile Include="Assets\Scripts\Linker\ThresholdFloatLinker.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem_Event.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\NetworkSystem.cs" />
     <Compile Include="Assets\SubSystem\NetworkSystem\UI\LatencySimulator.cs" />
