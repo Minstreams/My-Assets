@@ -13,7 +13,7 @@ namespace GameSystem.Networking
             get
             {
 #if UNITY_EDITOR
-                if (!TheMatrix.Setting.debug) return false;
+                if (!TheMatrix.EditorSetting.debug) return false;
 #endif
                 return true;
             }

@@ -41,9 +41,9 @@ namespace GameSystem.UI
             handlerMusicVolume?.Bind(AudioSystem.GetVolume("VolumeMusic"), val => AudioSystem.SetVolume("VolumeMusic", val));
             handlerSoundVolume?.Bind(AudioSystem.GetVolume("VolumeSound"), val => AudioSystem.SetVolume("VolumeSound", val));
 
-            handlerMouseSensitivityX?.Bind(ControlSetting.mouseSensitivity.x, val => ControlSetting.mouseSensitivity.x = val);
-            handlerMouseSensitivityY?.Bind(ControlSetting.mouseSensitivity.y, val => ControlSetting.mouseSensitivity.y = val);
-            handlerInvertY?.Bind(ControlSetting.mouseInvertY, val => ControlSetting.mouseInvertY = val);
+            //handlerMouseSensitivityX?.Bind(ControlSetting.mouseSensitivity.x, val => ControlSetting.mouseSensitivity.x = val);
+            //handlerMouseSensitivityY?.Bind(ControlSetting.mouseSensitivity.y, val => ControlSetting.mouseSensitivity.y = val);
+            //handlerInvertY?.Bind(ControlSetting.mouseInvertY, val => ControlSetting.mouseInvertY = val);
         }
 
 

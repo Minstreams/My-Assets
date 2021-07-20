@@ -21,6 +21,7 @@ namespace GameSystem
         }
         static IEnumerator QuickTestCoroutine()
         {
+            yield return 0;
             //while (true)
             //{
             //    yield return 0;
@@ -67,6 +68,7 @@ namespace GameSystem
         static IEnumerator StartMenu()
         {
             // todo
+            yield return 0;
         }
     }
 }
