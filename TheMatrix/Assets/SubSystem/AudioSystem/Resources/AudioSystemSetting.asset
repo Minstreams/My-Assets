@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13489734fe358d49910715585d71cab, type: 3}
   m_Name: AudioSystemSetting
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 2d35431cf4c41ca43ac1b927789b3b8a, type: 2}
+  mixer: {fileID: 24100000, guid: d38bcf90d9411f64fad4304b7fac6856, type: 2}
   audioMap:
     list:
     - {fileID: 8300000, guid: f96636430d502bc41a463066788cbd91, type: 3}
