@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{FE1779CB-471E-95BA-41DF-50D13C57DF77}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -56,6 +57,8 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Library\LabelAttribute\Editor\LabelClipBoard.cs" />
+    <Compile Include="Assets\Scripts\Library\LabelAttribute\Editor\LabelEventDrawer.cs" />
     <Compile Include="Assets\Scripts\Library\LabelRangeAttribute\Editor\LabelRangeDrawer.cs" />
     <Compile Include="Assets\Scripts\Library\LabelAttribute\Editor\LabelDrawer.cs" />
     <Compile Include="Assets\Scripts\Library\MinsHeaderAttribute\Editor\MinsHeaderDrawer.cs" />
